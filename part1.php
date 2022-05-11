@@ -130,40 +130,61 @@ $b1->status="crevé";
 // $ballonRugby->lancer();
 
 
-// -------------- V2 Ballon parametre à une méthode !
+// // -------------- V2 Ballon parametre à une méthode !
 
 
-class Ballon {
+// class Ballon {
     
-    public $marque;
-    public $sport;
+//     public $marque;
+//     public $sport;
 
-    function lancer($distance){
-        echo "Vous avez lancé le ballon à  $distance métres  ! <br>";
+//     // on peut mettre null pour eviter le bug de sans param
+//     // ou on peut déclarer une distance mini
+//     function lancer($distance = 7){
+//         echo "Vous avez lancé le ballon à  $distance métres  ! <br>";
+//     }
+
+// }
+
+// // On instancie 2 types de ballons
+
+
+// //----------Ballon de Foot -----------
+// $b1= new Ballon(); // Instanciation
+// $b1->marque = "Nike"; // on assigne à la props une valeur...
+// $b1->sport = "football";
+// //----------Ballon de Rugby -----------
+// $ballonRugby= new Ballon(); // Instanciation
+// $ballonRugby->marque = "Gilbert TM";
+// $ballonRugby->sport = "rugby";
+// // ------- ACTION sur les objets
+
+// echo "Sport: $b1->sport  <br> Marque: $b1->marque";
+// echo "<br>";
+// $b1->lancer(20);
+
+
+// echo "<br><br><hr>";
+
+// echo "Sport: $ballonRugby->sport  <br> Marque: $ballonRugby->marque";
+// echo "<br>";
+// $ballonRugby->lancer();
+
+
+//-------------------- CLASS USER
+
+
+class User {
+
+    public $nom;
+    public $age;
+
+    function tchater($message){
+        echo " - " . $message . "<br>";
     }
 
 }
 
-// On instancie 2 types de ballons
 
 
-//----------Ballon de Foot -----------
-$b1= new Ballon(); // Instanciation
-$b1->marque = "Nike"; // on assigne à la props une valeur...
-$b1->sport = "football";
-//----------Ballon de Rugby -----------
-$ballonRugby= new Ballon(); // Instanciation
-$ballonRugby->marque = "Gilbert TM";
-$ballonRugby->sport = "rugby";
-// ------- ACTION sur les objets
 
-echo "Sport: $b1->sport  <br> Marque: $b1->marque";
-echo "<br>";
-$b1->lancer(20);
-
-
-echo "<br><br><hr>";
-
-echo "Sport: $ballonRugby->sport  <br> Marque: $ballonRugby->marque";
-echo "<br>";
-$ballonRugby->lancer(70);
