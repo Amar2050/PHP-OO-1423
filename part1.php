@@ -44,12 +44,12 @@
 
 // ------------- SYNTAXE OBJECT OPERATOR -----------
 
-$b1 = new stdClass(); // j'instancie un objet a partir de la class STDCLASS
+// $b1 = new stdClass(); // j'instancie un objet a partir de la class STDCLASS
 
-$b1->type="Football"; // je lui assigne un attribut "type" qui prend la valeur "Football"
-$b1->marque="Nike"; // je lui assigne une propriété "marque" qui prend la valeur "Nike"
-$b1->taille= 5;     
-$b1->status="crevé";
+// $b1->type="Football"; // je lui assigne un attribut "type" qui prend la valeur "Football"
+// $b1->marque="Nike"; // je lui assigne une propriété "marque" qui prend la valeur "Nike"
+// $b1->taille= 5;     
+// $b1->status="crevé";
 
 
 // // echo $b1; génére une erreur normal objet =! string
@@ -133,37 +133,63 @@ $b1->status="crevé";
 // -------------- V2 Ballon parametre à une méthode !
 
 
-class Ballon {
+// class Ballon {
     
-    public $marque;
-    public $sport;
+//     public $marque;
+//     public $sport;
 
-    function lancer($distance){
-        echo "Vous avez lancé le ballon à  $distance métres  ! <br>";
+//     function lancer($distance){
+//         echo "Vous avez lancé le ballon à  $distance métres  ! <br>";
+//     }
+
+// }
+
+// // On instancie 2 types de ballons
+
+
+// //----------Ballon de Foot -----------
+// $b1= new Ballon(); // Instanciation
+// $b1->marque = "Nike"; // on assigne à la props une valeur...
+// $b1->sport = "football";
+// //----------Ballon de Rugby -----------
+// $ballonRugby= new Ballon(); // Instanciation
+// $ballonRugby->marque = "Gilbert TM";
+// $ballonRugby->sport = "rugby";
+// // ------- ACTION sur les objets
+
+// echo "Sport: $b1->sport  <br> Marque: $b1->marque";
+// echo "<br>";
+// $b1->lancer(20);
+
+
+// echo "<br><br><hr>";
+
+// echo "Sport: $ballonRugby->sport  <br> Marque: $ballonRugby->marque";
+// echo "<br>";
+// $ballonRugby->lancer(70);
+
+
+
+// ---------------- CLASS USER V0 ----------------
+
+class User {
+    public $name;
+    public $age;
+
+    function tchater($message){
+        return "<p> - $message</p>"; // on a remplacer le echo par return
     }
-
 }
 
-// On instancie 2 types de ballons
 
+$michel = new User();
 
-//----------Ballon de Foot -----------
-$b1= new Ballon(); // Instanciation
-$b1->marque = "Nike"; // on assigne à la props une valeur...
-$b1->sport = "football";
-//----------Ballon de Rugby -----------
-$ballonRugby= new Ballon(); // Instanciation
-$ballonRugby->marque = "Gilbert TM";
-$ballonRugby->sport = "rugby";
-// ------- ACTION sur les objets
+$michel->name = "Michel";
+$michel->age = 49;
 
-echo "Sport: $b1->sport  <br> Marque: $b1->marque";
-echo "<br>";
-$b1->lancer(20);
+$text = $michel->tchater(" $michel->name : Salut salut !");
 
-
-echo "<br><br><hr>";
-
-echo "Sport: $ballonRugby->sport  <br> Marque: $ballonRugby->marque";
-echo "<br>";
-$ballonRugby->lancer(70);
+echo $michel->tchater(" $michel->name : Salut salut !"); // ici un echo car la méthode return
+var_dump($text); // on a le retour donc uniquement du string plus d'objet ici
+echo $text;    // on peut afficher / PDO et le fetchAll renvoi et convertit aussi
+echo htmlentities($text); // ici pour echapper le html donc ne pas interpreter
