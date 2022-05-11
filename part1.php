@@ -346,30 +346,30 @@
 // $pain->tQuoi($pain->chocolat);
 
 //  this POO 
-class Facture {
+// class Facture {
 
-    public $taux = 45;
-    public $client;
-    public $montant;
+//     public $taux = 45;
+//     public $client;
+//     public $montant;
 
 
-    function afficherTaux(){
-        echo " <p>Taux: " . $this->taux ."%  </p>";
-    }
+//     function afficherTaux(){
+//         echo " <p>Taux: " . $this->taux ."%  </p>";
+//     }
 
-    function afficherClient(){
-        echo "Client: $this->client  <br>";
-    }
+//     function afficherClient(){
+//         echo "Client: $this->client  <br>";
+//     }
 
-    function truc(){
+//     function truc(){
 
-    }
+//     }
 
-    function detailsObjet(){
-        var_dump($this); 
-    }
+//     function detailsObjet(){
+//         var_dump($this); 
+//     }
 
-} // ---> 
+// } // ---> 
 
 // NIVEAU 1 --------> MANIPULER L'objet depuis l'intérieur de la class
 // NIVEAU 2 --------> $this EST l'objet !
@@ -387,52 +387,146 @@ class Facture {
 
 
 
-// -------------- WebForce3
-$fev= new Facture(); // Moule Facture
-$fev->client = "WebForce3";
-$fev->taux = 24;
-$fev->montant = 2500;
-$fev->afficherClient();
-$fev->afficherTaux();
-$fev->detailsObjet();
-
-var_dump($fev);
+// // -------------- WebForce3
+// $fev= new Facture(); // Moule Facture
+// $fev->client = "WebForce3";
+// $fev->taux = 24;
+// $fev->montant = 2500;
+// $fev->afficherClient();
+// $fev->afficherTaux();
+// $fev->detailsObjet();
 
 // var_dump($fev);
-echo "<hr>";
 
-// ----------- Soros
-$mai = new Facture();
-$mai->client = "George Soros";
-$mai->montant = 450000;
-$mai->afficherTaux();
-$mai->afficherClient();
-$mai->detailsObjet();
+// // var_dump($fev);
+// echo "<hr>";
 
-
-
-
-
-
-
+// // ----------- Soros
+// $mai = new Facture();
+// $mai->client = "George Soros";
+// $mai->montant = 450000;
+// $mai->afficherTaux();
+// $mai->afficherClient();
+// $mai->detailsObjet();
 
 // // -------------- STAND By ---
-class Immobilier {
+// class Immobilier {
 
-    public $nom;
-    public $prix;
-    public $surface;
+//     public $nom;
+//     public $prix;
+//     public $surface;
 
-    function calculPrix(){
-        $this->prix * $this->surface;
+//     function calculPrix(){
+//         $this->prix * $this->surface;
+//     }
+
+
+// }
+
+// $bien1 = new Immobilier();
+
+// // PDO 
+// $apparts = $db->fetchAll();
+
+// $bien->prix($apparts[0]['prix']);
+
+
+// class Car {
+
+//     public $name;
+//     public $marque;
+
+//     function infoCarName(){
+//         echo $this->name . "<br>" . $this->marque;
+//     }
+
+//     function truc(){
+//         $this->infoCarName();
+//     }
+
+// }
+
+// $voiture1 = new Car();
+// $voiture1->name = "2CV";
+// $voiture1->marque = "Citroën";
+
+// $voiture2 = new Car();
+// $voiture2->name = "Golf 7 R32";
+// $voiture2->marque = "VW";
+
+// $voiture3 = new Car();
+// $voiture3->name = "6.3 AMG";
+// $voiture3->marque = "Mercedes";
+
+// // echo $voiture1->name . "<br>" . $voiture1->marque;
+
+// $voiture2->truc();
+
+// var_dump($voiture1);
+
+// var_dump($voiture2);
+
+// var_dump($voiture3);
+
+
+
+class Produit {
+
+    public $name;
+    public $brut;
+    public $tvaNormal = 1.20;
+    public $tvaNormalSuisse = 1.07;
+    public $tvaIntermédiaire  = 1.10;
+    public $tvaReduit = 1.05;
+
+    function prixTTCNormal($pays){
+        if ($pays == "fr") {
+            return $this->brut  * $this->tvaNormal ;
+        }else if($pays == "ch") {
+            return $this->brut  * $this->tvaNormalSuisse ;
+        }else {
+            echo "Désolé...demande à ta grand mère !";
+        }
     }
+
+    function prixTTCIntermediaireFr(){
+        return $this->brut  * $this->tvaIntermédiaire ;
+    }
+
+
+    /**
+     * Résumer du produit
+     *
+     * @param string "fr" ou "ch"
+     * @return string
+     */
+    function resume($pays){
+        echo "Nom du produit: " . $this->name ."<br>";
+        if ($pays == "fr") {
+           echo " <br> Prix français: ". $this->prixTTCNormal($pays) ."&euro; <br>";
+           echo "Prix français intermédiaire: " . $this->prixTTCIntermediaireFr() ." € <br>";
+        } else {
+            echo "<br> Prix suisse: ".  $this->prixTTCNormal("ch") . "&euro;";
+        }
+
+        
+        
+    }
+
 
 
 }
 
-$bien1 = new Immobilier();
+$product = new Produit();
 
-// PDO 
-$apparts = $db->fetchAll();
+$product->name = "Samsung G9 Odyssey";
+$product->brut = 1000;
 
-$bien->prix($apparts[0]['prix']);
+$prixTTCFR = $product->prixTTCNormal("fr");
+
+// var_dump($prixTTCFR);
+
+$product->resume("fr");
+
+
+
