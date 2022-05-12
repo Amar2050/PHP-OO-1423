@@ -1,4 +1,32 @@
 <?php
+
+
+class Chicken {
+    function __destruct()
+    {
+        echo "<p> Object detruit  OU fin d'utilisation de la class</p>";
+    }
+    function __construct()
+    {
+        echo "<p> Object créer </p>";
+    }
+}
+
+$nugget= new Chicken();
+$nugget1= new Chicken();
+unset($nugget);
+$nugget2= new Chicken();
+
+$test = "ceci est un treruc";
+
+var_dump($test);
+
+unset($test);
+// session_start();
+// $_SESSION // session ... 25min  // panier // formulaire // escape game // transporter des variables d'une page a une autre TANT QUE la session_start()
+
+var_dump($test);
+
 // class Verre 
 // {
 //     public $nom;
