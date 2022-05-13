@@ -1,42 +1,53 @@
 <?php
 
-// session_start();
+class User {
 
-// $_SESSION["truc"] = "Article 1 prix 50e";
-// $_SESSION["id"] = 12;
-
-// var_dump($_SESSION);
-class Chicken {
-
-    public $name;
-
-    function __destruct()
-    {
-        echo "<p> Object detruit  OU fin d'utilisation de la class</p>";
+    private $firstname;  
+    private $lastname;
+    private $email;
+    private $password;
+   
+    public function __construct($firstname,$lastname,$email,$password){
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->email = $email;
+        $this->password = $password;
     }
-    function __clone()
-    {
-        echo "<p> Object cloné </p>";
+
+    private function direHello(){
+        echo "<p> $this->firstname </p>";
     }
-    function __construct($unPrenom)
-    {
-        $this->name = $unPrenom;
-        echo "<p> Object créer - $this->name </p>";
+
+    public function hello($pass){
+        if ($pass == 1234 )
+        $this->direHello();
+        else
+        echo "Accès refusé laborantin X";
     }
-}
-
-$nugget= new Chicken("Original ONE");
-
-$nuggetClone= clone $nugget; // identique // clone objet
-
-echo "Clone: " . $nuggetClone->name;
-
-$nuggetClone->name = "Agent 47 <br>";
-
-echo "<br> Clone: " . $nuggetClone->name . " ! ";
 
 
-echo "<br> L'original: " . $nugget->name . " ! ";
+    // INTERIEUR | INSIDE CLASS 
+} // PARTOUT | OUTSIDE 
+
+
+// ------ ENCAPSULATION - CAPSULE -- NIVEAU VISIBILITÉE - GETTER SETTER 
+
+// NIVEAU VISIBILITÉE -->   PUBLIC PRIVATE PROTECTED 
+// PUBLIC -->               OPEN BAR ACCECESSIBLE de partout  
+// PRIVATE -->              UTILISABLE QUE DANS LA CLASS 
+// PROTECTED -->            UTILISABLE QUE DANS LA CLASS 
+
+// PRIVATE --> UNLOCK par le PUBLIC ---> GETTER SETTER 
+
+$michel = new User("Michel","Dupont","michoux@gmail.com","password");
+
+
+// echo $michel->firstname = "OKKKK";
+
+$michel->hello(1584);
+
+
+
 // $nugget1= new Chicken();
 // unset($nugget);
 // $nugget2= new Chicken();
