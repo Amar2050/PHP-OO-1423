@@ -1,31 +1,56 @@
 <?php
 
+// session_start();
 
+// $_SESSION["truc"] = "Article 1 prix 50e";
+// $_SESSION["id"] = 12;
+
+// var_dump($_SESSION);
 class Chicken {
+
+    public $name;
+
     function __destruct()
     {
         echo "<p> Object detruit  OU fin d'utilisation de la class</p>";
     }
-    function __construct()
+    function __clone()
     {
-        echo "<p> Object créer </p>";
+        echo "<p> Object cloné </p>";
+    }
+    function __construct($unPrenom)
+    {
+        $this->name = $unPrenom;
+        echo "<p> Object créer - $this->name </p>";
     }
 }
 
-$nugget= new Chicken();
-$nugget1= new Chicken();
-unset($nugget);
-$nugget2= new Chicken();
+$nugget= new Chicken("Original ONE");
 
-$test = "ceci est un treruc";
+$nuggetClone= clone $nugget; // identique // clone objet
 
-var_dump($test);
+echo "Clone: " . $nuggetClone->name;
 
-unset($test);
+$nuggetClone->name = "Agent 47 <br>";
+
+echo "<br> Clone: " . $nuggetClone->name . " ! ";
+
+
+echo "<br> L'original: " . $nugget->name . " ! ";
+// $nugget1= new Chicken();
+// unset($nugget);
+// $nugget2= new Chicken();
+
+// $test = "ceci est un treruc";
+
+// var_dump($test);
+
+// unset($test);
 // session_start();
 // $_SESSION // session ... 25min  // panier // formulaire // escape game // transporter des variables d'une page a une autre TANT QUE la session_start()
 
-var_dump($test);
+
+
 
 // class Verre 
 // {
