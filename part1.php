@@ -1,11 +1,12 @@
 <?php
 
-class User {
+  class User {
 
     private $firstname;  
     private $lastname;
     private $email;
     private $password;
+    private $age;
    
     public function __construct($firstname,$lastname,$email,$password){
         $this->firstname = $firstname;
@@ -14,7 +15,7 @@ class User {
         $this->password = $password;
     }
 
-    private function direHello(){
+     function direHello(){
         echo "<p> $this->firstname </p>";
     }
 
@@ -25,9 +26,94 @@ class User {
         echo "Accès refusé laborantin X";
     }
 
+    public function getFirstName(){
 
-    // INTERIEUR | INSIDE CLASS 
-} // PARTOUT | OUTSIDE 
+        return $this->firstname;
+        
+    }
+
+    public function setFirstName($firstname){
+    
+        $this->firstname = $firstname;
+
+        return $this;
+
+    }
+
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+ 
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail(string $email)
+    {
+
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of password
+     */ 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */ 
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of age
+     */ 
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * Set the value of age
+     *
+     * @return  self
+     */ 
+    public function setAge($age)
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+}
 
 
 // ------ ENCAPSULATION - CAPSULE -- NIVEAU VISIBILITÉE - GETTER SETTER 
@@ -39,15 +125,19 @@ class User {
 
 // PRIVATE --> UNLOCK par le PUBLIC ---> GETTER SETTER 
 
-$michel = new User("Michel","Dupont","michoux@gmail.com","password");
+
+$michel = new User("Michél","Dupont","michoux@gmail.com","password");
 
 
 // echo $michel->firstname = "OKKKK";
 
-$michel->hello(1584);
+// $michel->hello(1584);
 
+echo mb_strlen($michel->getFirstName());
 
+$michel->setFirstName("Michelax");
 
+var_dump($michel);
 // $nugget1= new Chicken();
 // unset($nugget);
 // $nugget2= new Chicken();
