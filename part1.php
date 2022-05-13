@@ -126,18 +126,60 @@
 // PRIVATE --> UNLOCK par le PUBLIC ---> GETTER SETTER 
 
 
-$michel = new User("Michél","Dupont","michoux@gmail.com","password");
+// $michel = new User("Michél","Dupont","michoux@gmail.com","password");
 
 
-// echo $michel->firstname = "OKKKK";
+// // echo $michel->firstname = "OKKKK";
 
-// $michel->hello(1584);
+// // $michel->hello(1584);
 
-echo mb_strlen($michel->getFirstName());
+// echo mb_strlen($michel->getFirstName());
 
-$michel->setFirstName("Michelax");
+// $michel->setFirstName("Michelax");
 
-var_dump($michel);
+// var_dump($michel);
+
+//------------------------- HERITAGE ------------
+
+//  class Mere {  // CLASS MERE EFFECTIVE
+//     public $name="Maman";
+
+//     public function direNom(){
+//         echo "<p> $this->name</p>";
+//     }
+
+// }
+
+// $mom = new Mere();
+
+// $mom->direNom();
+
+// $mom->name=12;
+
+ abstract class Mere { 
+    private $name="Maman";
+
+    public function direNom(){
+        echo "<p> $this->name</p>";
+    }
+
+}
+
+class Fille extends Mere{
+    public $name ="Fille";
+
+    public function direNomMere(){
+        $this->direNom();
+    }
+}
+
+$fille = new Fille();
+
+echo $fille->name; // 
+$fille->direNomMere();
+// var_dump($fille);
+
+
 // $nugget1= new Chicken();
 // unset($nugget);
 // $nugget2= new Chicken();
